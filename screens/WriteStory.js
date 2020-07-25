@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView,ToastAndroid } from 'react-native';
 import db from '../config.js'
 
 export default class WriteStory extends React.Component {
@@ -15,6 +15,7 @@ export default class WriteStory extends React.Component {
 
     submitStory = () => {
         console.log(db.collection("Stories"))
+        ToastAndroid.show("Your Story has been submitted",ToastAndroid.SHORT)
         db.collection("Stories").add({
             title: this.state.title,
             author: this.state.author,
@@ -29,7 +30,8 @@ export default class WriteStory extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <KeyboardAvoidingView behavior="padding" style={styles.container}> 
+<View style={styles.container}>
                 <TextInput
                     placeholder="Story Title"
                     placeholderTextColor='black'
@@ -69,10 +71,13 @@ export default class WriteStory extends React.Component {
 
                 <TouchableOpacity
                     onPress={this.submitStory}
+                    
                 >
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
+            </KeyboardAvoidingView>
+            
         );
     }
 }
