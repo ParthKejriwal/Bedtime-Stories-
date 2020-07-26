@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
-export default function ReadStory() {
-  return (
-    <View style={styles.container}>
-      <Text>Read a story</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class ReadStory extends React.Component() {
+  constructor(){
+    super()
+    this.state={
+      search:''
+    }
+  }
+
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
+  render() {
+    const { search } = this.state;
+
+    return (
+      <SearchBar
+        placeholder="Type Here..."
+        onChangeText={this.updateSearch}
+        value={search}
+      />
+    );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
