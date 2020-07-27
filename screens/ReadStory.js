@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
-export default class ReadStory extends React.Component() {
+export default class ReadStory extends React.Component {
   constructor(){
     super()
     this.state={
@@ -24,5 +24,5 @@ export default class ReadStory extends React.Component() {
         value={search}
       />
     );
-    }
+  }
 }
