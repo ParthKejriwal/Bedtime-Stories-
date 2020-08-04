@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ReadStory from "./screens/ReadStory";
 import WriteStory from "./screens/WriteStory";
 import {Image} from "react-native";
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,3 +41,9 @@ export default function App() {
         </NavigationContainer>
     );
 }
+
+var AppNavigator = createSwitchNavigator({
+    loginScreen:loginScreen
+  });
+  
+  const AppContainer = createAppContainer(AppNavigator);
